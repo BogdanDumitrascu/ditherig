@@ -622,11 +622,13 @@ BOOL ConfigureGPURegister(DWORD Selection)
 						if(ReadPhysicalMemory(Address + RegisterAddress, &Old, RegisterSize))
 						{
 							New = Old;
-							New = (New & ~RegisterMask) | (RegisterData & RegisterMask);
+							//New = 0x4000040 | ((New & ~RegisterMask) | (RegisterData & RegisterMask));
+							New = 0x0000040 | ((New & ~RegisterMask) | (RegisterData & RegisterMask));
 							if(New == Old)
 								bResult = TRUE;
 							else
 							{
+								//New = 0x4000040;
 								if(WritePhysicalMemory(Address + RegisterAddress, &New, RegisterSize))
 									bResult = TRUE;
 							}
