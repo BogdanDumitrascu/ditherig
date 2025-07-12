@@ -18,8 +18,6 @@
 #include <mmsystem.h>
 #include <taskschd.h>
 
-#include <NullNew.h>
-
 #pragma comment(lib, "winmm.lib")
 #pragma comment(lib, "taskschd.lib")
 

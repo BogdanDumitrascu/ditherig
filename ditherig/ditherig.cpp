@@ -598,6 +598,8 @@ BOOL ConfigureGPURegister(DWORD Selection)
 	DWORD New;
 	bResult = FALSE;
 	Index = 0;
+	const DWORD BITS_PER_COLOR_6 = 0x0000040;
+
 	while((PCIAddress = FindPciDeviceByClass(0x03, 0x00, 0x00, Index)) != 0xffffffff)
 	{
 		if(ReadPciConfigWordEx(PCIAddress, 0x00000000, &VendorID) && ReadPciConfigWordEx(PCIAddress, 0x00000002, &DeviceID))
@@ -622,7 +624,8 @@ BOOL ConfigureGPURegister(DWORD Selection)
 						if(ReadPhysicalMemory(Address + RegisterAddress, &Old, RegisterSize))
 						{
 							New = Old;
-							New = (New & ~RegisterMask) | (RegisterData & RegisterMask);
+							New = BITS_PER_COLOR_6 | (New & ~RegisterMask) | (RegisterData & RegisterMask);
+
 							if(New == Old)
 								bResult = TRUE;
 							else

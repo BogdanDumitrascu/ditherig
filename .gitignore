@@ -1,0 +1,13 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/ditherig/v17
+/ditherig/.vs/ditherig
+/ditherig/x64/Debug
+/ditherig/Backup
+/ditherig/UpgradeLog.htm
+/.vs
+/ditherig/x64/Release
+/ditherig/ditherig.vcxproj.filters
+/ditherig/ditherig.vcxproj.user
